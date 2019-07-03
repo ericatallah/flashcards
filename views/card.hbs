@@ -1,0 +1,26 @@
+<section class="flashcards">
+    {{#if sideQuestion}}
+    <div class="card card-question">
+    {{else}}
+    <div class="card card-answer">
+    {{/if}}
+        <div class="card-header"></div>
+        <h1 class="card-title">{{sideDisplay}}</h1>
+        <div id="content">
+            <h2>{{text}}</h2>
+            {{#if sideQuestion}}
+            <p class="hint">
+                <i>Hint: {{hint}}</i>
+            </p>
+            {{/if}}
+        </div>
+        
+        <div class="card-flip-wrap">
+            <a href="/cards/{{id}}/?side={{flipTo}}"><img class="card-flip" src="/static/img/flip.svg" /></a>
+        </div>
+
+        <div class="card-next">
+            <a href="/cards"><img src="/static/img/next.svg" /></a>
+        </div>
+    </div>
+</section>

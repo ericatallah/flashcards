@@ -1,23 +1,40 @@
 const express = require('express');
-const exphbs = require('express-handlebars');
-
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const hbs = require('express-handlebars');
 const app = express();
 
-app.engine('handlebars', exphbs());
-app.set('view engine', 'handlebars');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use('/static', express.static('public'));
 
-app.get('/', (req, res) => {
-    res.render('index');
-});
+app.engine('hbs', hbs({
+    extname: 'hbs',
+    defaultLayout: 'main',
+    layoutsDir: `${__dirname}/views/layouts/`,
+    partialsDir: `${__dirname}/views/includes/`
+}));
 
-app.get('/card', (req, res) => {
-    res.render('card', { name: 'Bossman' });
-});
+app.set('view engine', 'hbs');
+
+const mainRoutes = require('./routes');
+const cardRoutes = require('./routes/cards');
+
+app.use(mainRoutes);
+app.use('/cards', cardRoutes);
 
 // 404 route
-app.get('*', (req, res) => {
-    console.log('are we in here?');
-    res.render('404');
+app.use((req, res, next) => {
+    const err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+
+// error handler
+app.use((err, req, res, next) => {
+    res.locals.error = err;
+    res.status(err.status);
+    res.render('error');
 });
 
 app.listen(3000, () => {
