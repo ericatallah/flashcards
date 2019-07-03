@@ -4,6 +4,8 @@ const cookieParser = require('cookie-parser');
 const hbs = require('express-handlebars');
 const app = express();
 
+const port = process.env.PORT || 5000;
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use('/static', express.static('public'));
@@ -37,6 +39,6 @@ app.use((err, req, res, next) => {
     res.render('error');
 });
 
-app.listen(5000, () => {
-    console.log('This app running on localhost:5000');
+app.listen(port, () => {
+    console.log(`This app running on localhost:${port}`);
 });
