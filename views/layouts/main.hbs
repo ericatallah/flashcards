@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flash Cards</title>
+    <link href="/static/stylesheets/style.css" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+    {{> header }}
+
+    {{#if username}}
+    <section class="namecard">
+        <div class="namecard-hello">
+            <p class="namecard-greeting">Welcome, {{username}}!</p>
+            <form action="/goodbye" method="post" class="namecard-exit">
+                <button type="submit"><img src="/static/img/close.svg" /></button>
+            </form>
+        </div>
+
+        {{{body}}}
+    </section>
+    {{else}}
+    {{{body}}}
+    {{/if}}
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

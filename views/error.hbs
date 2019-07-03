@@ -1,0 +1,11 @@
+<section class="desk">
+    <h1>{{error.message}} - Status: {{error.status}}</h1>
+    <img src="/static/img/desk.svg" class="desk-items" />
+    <a class="button-primary-email" href="/hello">Go Home</a>
+    <div class="paper">
+        <pre class="stack-trace">
+            {{error.stack}}
+        </pre>
+    </div>
+    <div class="tear"></div>
+</section>
