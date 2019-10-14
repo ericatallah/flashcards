@@ -26,6 +26,21 @@
                 "question": "Which HTML element can contain JavaScript?",
                 "hint": "It starts with an \"s\"",
                 "answer": "<script>"
+            },
+            {
+                "question": "What are three ways to create variables in JavaScript?",
+                "hint": "One of them rhymes with car.  Another with bet.",
+                "answer": "var, let, const"
+            },
+            {
+                "question": "What does NPM stand for?",
+                "hint": "A tool to help organize your dependencies.",
+                "answer": "Node package manager"
+            },
+            {
+            "question": "What is the difference between == and === in JavaScript?",
+                "hint": "Think about comparing things of different data types.",
+                "answer": "== checks equality only.  === checks for equality as well as verifying they are the same data type."
             }
         ]
     }
